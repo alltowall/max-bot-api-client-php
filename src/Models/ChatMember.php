@@ -27,6 +27,7 @@ final readonly class ChatMember extends AbstractModel
      * @param bool $isAdmin True if this member is an administrator of the chat.
      * @param int $joinTime The time the user joined the chat.
      * @param ChatAdminPermission[]|null $permissions A list of permissions if the member is an admin, otherwise null.
+     * @param string|null $alias Alias of the user.
      */
     public function __construct(
         public int $userId,
@@ -44,6 +45,7 @@ final readonly class ChatMember extends AbstractModel
         public int $joinTime,
         #[ArrayOf(ChatAdminPermission::class)]
         public ?array $permissions,
+        public ?string $alias,
     ) {
     }
 }

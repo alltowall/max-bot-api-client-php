@@ -58,4 +58,11 @@ final class BotPatchTest extends TestCase
         $patch = new BotPatch();
         $this->assertEmpty($patch->toArray());
     }
+
+    #[Test]
+    public function toArrayFirstAndLastName(): void
+    {
+        $patch = new BotPatch(first_name: 'New Name', last_name: null);
+        $this->assertEquals(['first_name' => 'New Name', 'last_name' => null], $patch->toArray());
+    }
 }

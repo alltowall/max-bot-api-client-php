@@ -48,6 +48,10 @@ final class ChatTest extends TestCase
             ],
             'messages_count' => 100,
             'chat_message_id' => 'mid.123',
+            'participants' => [
+                '456' => 1678886400000,
+                '789' => 1678886500000,
+            ],
         ];
 
         $chat = Chat::fromArray($data);
@@ -99,5 +103,6 @@ final class ChatTest extends TestCase
         $this->assertNull($chat->dialogWithUser);
         $this->assertNull($chat->messagesCount);
         $this->assertNull($chat->chatMessageId);
+        $this->assertNull($chat->participants);
     }
 }

@@ -28,6 +28,7 @@ final readonly class Chat extends AbstractModel
      * @param int|null $messagesCount Messages count in chat. Only for group chats and channels. Not available for dialogs.
      * @param string|null $chatMessageId Identifier of message that contains `chat` button initialized chat.
      * @param Message|null $pinnedMessage Pinned message in chat or channel. Returned only when single chat is requested.
+     * @param array<string, int>|null $participants List of participants in chat. Returned only when single chat is requested.
      */
     public function __construct(
         public int $chatId,
@@ -45,6 +46,7 @@ final readonly class Chat extends AbstractModel
         public ?int $messagesCount,
         public ?string $chatMessageId,
         public ?Message $pinnedMessage,
+        public ?array $participants,
     ) {
     }
 }

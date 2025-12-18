@@ -458,6 +458,7 @@ final class ModelFactoryTest extends TestCase
             'is_admin' => true,
             'join_time' => 1678000000,
             'permissions' => ['pin_message', 'write'],
+            'alias' => null,
         ];
 
         $chatMember = $this->factory->createChatMember($rawData);

@@ -15,11 +15,13 @@ final readonly class ChatAdmin extends AbstractModel
     /**
      * @param int $userId The identifier of the user to be made an admin.
      * @param ChatAdminPermission[] $permissions The list of permissions to grant to the user.
+     * @param string|null $alias Alias of the user.
      */
     public function __construct(
         public int $userId,
         #[ArrayOf(ChatAdminPermission::class)]
         public array $permissions,
+        public ?string $alias = null,
     ) {
     }
 }

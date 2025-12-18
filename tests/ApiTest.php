@@ -1671,8 +1671,8 @@ final class ApiTest extends TestCase
 
         $expectedBody = [
             'admins' => [
-                ['user_id' => 101, 'permissions' => ['write']],
-                ['user_id' => 202, 'permissions' => ['pin_message']],
+                ['user_id' => 101, 'permissions' => ['write'], 'alias' => null],
+                ['user_id' => 202, 'permissions' => ['pin_message'], 'alias' => null],
             ],
         ];
         $rawResponse = ['success' => true];

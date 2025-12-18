@@ -34,6 +34,7 @@ final class ChatMemberTest extends TestCase
             'is_admin' => true,
             'join_time' => 1678000000,
             'permissions' => ['pin_message', 'write'],
+            'alias' => null,
         ];
 
         $member = ChatMember::fromArray($data);
@@ -66,6 +67,7 @@ final class ChatMemberTest extends TestCase
             'is_admin' => false,
             'join_time' => 1678000001,
             'permissions' => null,
+            'alias' => null,
         ];
 
         $member = ChatMember::fromArray($data);
