@@ -10,7 +10,7 @@ use BushlanovDev\MaxMessengerBot\Enums\ChatAdminPermission;
 /**
  * Represents a member of a chat, including their user information and chat-specific status.
  */
-final readonly class ChatMember extends AbstractModel
+final readonly class ChatMember extends AbstractUser
 {
     /**
      * @param int $userId User's identifier.
@@ -30,12 +30,12 @@ final readonly class ChatMember extends AbstractModel
      * @param string|null $alias Alias of the user.
      */
     public function __construct(
-        public int $userId,
-        public string $firstName,
-        public ?string $lastName,
-        public ?string $username,
-        public bool $isBot,
-        public int $lastActivityTime,
+        int $userId,
+        string $firstName,
+        ?string $lastName,
+        ?string $username,
+        bool $isBot,
+        int $lastActivityTime,
         public ?string $description,
         public ?string $avatarUrl,
         public ?string $fullAvatarUrl,
@@ -47,5 +47,6 @@ final readonly class ChatMember extends AbstractModel
         public ?array $permissions,
         public ?string $alias,
     ) {
+        parent::__construct($userId, $firstName, $lastName, $username, $isBot, $lastActivityTime);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BushlanovDev\MaxMessengerBot\Models;
 
-final readonly class User extends AbstractModel
+abstract readonly class AbstractUser extends AbstractModel
 {
     /**
      * @param int $userId Users identifier.

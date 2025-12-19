@@ -6,14 +6,14 @@ namespace BushlanovDev\MaxMessengerBot\Tests\Models\Updates;
 
 use BushlanovDev\MaxMessengerBot\Enums\UpdateType;
 use BushlanovDev\MaxMessengerBot\Models\Updates\UserAddedToChatUpdate;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(UserAddedToChatUpdate::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class UserAddedToChatUpdateTest extends TestCase
 {
     #[Test]
@@ -30,6 +30,9 @@ final class UserAddedToChatUpdateTest extends TestCase
                 'is_bot' => false,
                 'last_activity_time' => 1680000000,
                 'username' => null,
+                'description' => null,
+                'avatar_url' => null,
+                'full_avatar_url' => null,
             ],
             'inviter_id' => 202,
             'is_channel' => false,
@@ -42,7 +45,7 @@ final class UserAddedToChatUpdateTest extends TestCase
         $this->assertSame(12345, $update->chatId);
         $this->assertSame(202, $update->inviterId);
         $this->assertFalse($update->isChannel);
-        $this->assertInstanceOf(User::class, $update->user);
+        $this->assertInstanceOf(UserWithPhoto::class, $update->user);
         $this->assertSame(101, $update->user->userId);
         $this->assertEquals($data, $update->toArray());
     }
@@ -61,6 +64,9 @@ final class UserAddedToChatUpdateTest extends TestCase
                 'is_bot' => false,
                 'last_activity_time' => 1680000001,
                 'username' => null,
+                'description' => null,
+                'avatar_url' => null,
+                'full_avatar_url' => null,
             ],
             'inviter_id' => null,
             'is_channel' => true,

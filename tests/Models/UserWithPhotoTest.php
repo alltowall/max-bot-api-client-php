@@ -16,15 +16,15 @@ final class UserWithPhotoTest extends TestCase
     public function canBeCreatedFromArray(): void
     {
         $data = [
+            'description' => 'Description',
+            'avatar_url' => 'https://example.com/avatar.jpg',
+            'full_avatar_url' => 'https://example.com/full_avatar.jpg',
             'user_id' => 123,
             'first_name' => 'John',
             'last_name' => 'Doe',
             'username' => 'johndoe',
             'is_bot' => false,
             'last_activity_time' => 1678886400000,
-            'description' => 'Description',
-            'avatar_url' => 'https://example.com/avatar.jpg',
-            'full_avatar_url' => 'https://example.com/full_avatar.jpg',
         ];
 
         $user = UserWithPhoto::fromArray($data);

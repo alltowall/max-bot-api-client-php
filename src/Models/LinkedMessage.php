@@ -14,13 +14,13 @@ final readonly class LinkedMessage extends AbstractModel
     /**
      * @param MessageLinkType $type Type of linked message (forward or reply).
      * @param MessageBody $message The body of the original message.
-     * @param User|null $sender The sender of the original message. Can be null if posted on behalf of a channel.
+     * @param UserWithPhoto|null $sender The sender of the original message. Can be null if posted on behalf of a channel.
      * @param int|null $chatId The chat where the message was originally posted (for forwarded messages).
      */
     public function __construct(
         public MessageLinkType $type,
         public MessageBody $message,
-        public ?User $sender,
+        public ?UserWithPhoto $sender,
         public ?int $chatId,
     ) {
     }

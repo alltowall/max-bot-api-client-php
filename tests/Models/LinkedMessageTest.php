@@ -7,7 +7,7 @@ namespace BushlanovDev\MaxMessengerBot\Tests\Models;
 use BushlanovDev\MaxMessengerBot\Enums\MessageLinkType;
 use BushlanovDev\MaxMessengerBot\Models\LinkedMessage;
 use BushlanovDev\MaxMessengerBot\Models\MessageBody;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(LinkedMessage::class)]
 #[UsesClass(MessageBody::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class LinkedMessageTest extends TestCase
 {
     #[Test]
@@ -46,7 +46,7 @@ final class LinkedMessageTest extends TestCase
         $this->assertSame(MessageLinkType::Reply, $linkedMessage->type);
         $this->assertInstanceOf(MessageBody::class, $linkedMessage->message);
         $this->assertSame('mid.original.123', $linkedMessage->message->mid);
-        $this->assertInstanceOf(User::class, $linkedMessage->sender);
+        $this->assertInstanceOf(UserWithPhoto::class, $linkedMessage->sender);
         $this->assertSame(101, $linkedMessage->sender->userId);
         $this->assertSame(98765, $linkedMessage->chatId);
     }

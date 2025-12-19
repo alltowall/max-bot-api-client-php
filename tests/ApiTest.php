@@ -47,7 +47,7 @@ use BushlanovDev\MaxMessengerBot\Models\Message;
 use BushlanovDev\MaxMessengerBot\Models\MessageBody;
 use BushlanovDev\MaxMessengerBot\Models\Recipient;
 use BushlanovDev\MaxMessengerBot\Models\Result;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use BushlanovDev\MaxMessengerBot\Models\Subscription;
 use BushlanovDev\MaxMessengerBot\Models\UpdateList;
 use BushlanovDev\MaxMessengerBot\Models\Updates\AbstractUpdate;
@@ -82,7 +82,7 @@ use RuntimeException;
 #[UsesClass(Message::class)]
 #[UsesClass(MessageBody::class)]
 #[UsesClass(Recipient::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 #[UsesClass(CallbackButton::class)]
 #[UsesClass(InlineKeyboardAttachmentRequestPayload::class)]
 #[UsesClass(InlineKeyboardAttachmentRequest::class)]

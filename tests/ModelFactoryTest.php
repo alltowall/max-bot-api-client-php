@@ -42,7 +42,6 @@ use BushlanovDev\MaxMessengerBot\Models\Message;
 use BushlanovDev\MaxMessengerBot\Models\MessageBody;
 use BushlanovDev\MaxMessengerBot\Models\Recipient;
 use BushlanovDev\MaxMessengerBot\Models\Result;
-use BushlanovDev\MaxMessengerBot\Models\User;
 use BushlanovDev\MaxMessengerBot\Models\Subscription;
 use BushlanovDev\MaxMessengerBot\Models\UpdateList;
 use BushlanovDev\MaxMessengerBot\Models\Updates\BotStartedUpdate;
@@ -70,7 +69,6 @@ use Psr\Log\LoggerInterface;
 #[UsesClass(Message::class)]
 #[UsesClass(MessageBody::class)]
 #[UsesClass(Recipient::class)]
-#[UsesClass(User::class)]
 #[UsesClass(UpdateList::class)]
 #[UsesClass(BotStartedUpdate::class)]
 #[UsesClass(MessageCreatedUpdate::class)]
@@ -282,7 +280,7 @@ final class ModelFactoryTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
         $this->assertInstanceOf(MessageBody::class, $message->body);
         $this->assertInstanceOf(Recipient::class, $message->recipient);
-        $this->assertInstanceOf(User::class, $message->sender);
+        $this->assertInstanceOf(UserWithPhoto::class, $message->sender);
     }
 
     #[Test]

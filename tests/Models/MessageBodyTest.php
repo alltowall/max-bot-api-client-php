@@ -15,7 +15,7 @@ use BushlanovDev\MaxMessengerBot\Models\Markup\StrongMarkup;
 use BushlanovDev\MaxMessengerBot\Models\Message;
 use BushlanovDev\MaxMessengerBot\Models\MessageBody;
 use BushlanovDev\MaxMessengerBot\Models\Recipient;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -32,7 +32,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass(StrongMarkup::class)]
 #[UsesClass(Message::class)]
 #[UsesClass(Recipient::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class MessageBodyTest extends TestCase
 {
     #[Test]
