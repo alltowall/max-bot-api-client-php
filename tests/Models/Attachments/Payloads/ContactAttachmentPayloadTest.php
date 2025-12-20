@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace BushlanovDev\MaxMessengerBot\Tests\Models\Attachments\Payloads;
 
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Payloads\ContactAttachmentPayload;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ContactAttachmentPayload::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class ContactAttachmentPayloadTest extends TestCase
 {
     #[Test]
     public function canBeCreatedAndSerialized(): void
     {
-        $user = User::fromArray(
+        $user = UserWithPhoto::fromArray(
             ['user_id' => 101, 'first_name' => 'MaxUser', 'is_bot' => false, 'last_activity_time' => time()]
         );
         $payload = new ContactAttachmentPayload('vcf_info_string', $user);

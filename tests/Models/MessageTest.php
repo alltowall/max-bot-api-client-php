@@ -9,7 +9,7 @@ use BushlanovDev\MaxMessengerBot\Models\Message;
 use BushlanovDev\MaxMessengerBot\Models\MessageBody;
 use BushlanovDev\MaxMessengerBot\Models\MessageStat;
 use BushlanovDev\MaxMessengerBot\Models\Recipient;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Message::class)]
 #[UsesClass(MessageBody::class)]
 #[UsesClass(Recipient::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 #[UsesClass(LinkedMessage::class)]
 #[UsesClass(MessageStat::class)]
 final class MessageTest extends TestCase
@@ -41,6 +41,9 @@ final class MessageTest extends TestCase
                 'markup' => null,
             ],
             'sender' =>[
+                'description' => null,
+                'avatar_url' => null,
+                'full_avatar_url' => null,
                 'user_id' => 123,
                 'first_name' => 'John',
                 'last_name' => 'Doe',
@@ -75,7 +78,7 @@ final class MessageTest extends TestCase
         $this->assertSame($data['timestamp'], $message->timestamp);
         $this->assertInstanceOf(MessageBody::class, $message->body);
         $this->assertInstanceOf(Recipient::class, $message->recipient);
-        $this->assertInstanceOf(User::class, $message->sender);
+        $this->assertInstanceOf(UserWithPhoto::class, $message->sender);
         $this->assertSame($data['url'], $message->url);
         $this->assertInstanceOf(MessageStat::class, $message->stat);
         $this->assertSame(500, $message->stat->views);

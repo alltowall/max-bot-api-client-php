@@ -12,7 +12,7 @@ use BushlanovDev\MaxMessengerBot\Models\MessageBody;
 use BushlanovDev\MaxMessengerBot\Models\Recipient;
 use BushlanovDev\MaxMessengerBot\Models\Updates\BotStartedUpdate;
 use BushlanovDev\MaxMessengerBot\Models\Updates\MessageCreatedUpdate;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use BushlanovDev\MaxMessengerBot\UpdateDispatcher;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -20,7 +20,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(UpdateDispatcher::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 #[UsesClass(BotStartedUpdate::class)]
 #[UsesClass(Message::class)]
 #[UsesClass(MessageBody::class)]
@@ -42,7 +42,7 @@ final class UpdateDispatcherTest extends TestCase
     {
         $wasCalled = false;
 
-        $user = new User(100, 'Test', 'User', 'testuser', false, time());
+        $user = new UserWithPhoto(100, 'Test', 'User', 'testuser', false, time(), null, null, null);
         $update = new BotStartedUpdate(time(), 12345, $user, null, 'ru-RU');
 
         $this->dispatcher->addHandler(
@@ -66,7 +66,7 @@ final class UpdateDispatcherTest extends TestCase
         $messageHandlerCalled = false;
 
         $messageBody = new MessageBody('mid1', 1, '/start with args', null, null);
-        $sender = new User(101, 'Cmd', 'Sender', 'cmdsender', false, time());
+        $sender = new UserWithPhoto(101, 'Cmd', 'Sender', 'cmdsender', false, time(), null, null, null);
         $recipient = new Recipient(ChatType::Dialog, 101, null);
         $message = new Message(time(), $recipient, $messageBody, $sender, null, null, null);
         $update = new MessageCreatedUpdate(time(), $message, 'ru-RU');
@@ -96,7 +96,7 @@ final class UpdateDispatcherTest extends TestCase
         $messageHandlerCalled = false;
 
         $messageBody = new MessageBody('mid2', 2, 'Hello world', null, null);
-        $sender = new User(102, 'Msg', 'Sender', 'msgsender', false, time());
+        $sender = new UserWithPhoto(102, 'Msg', 'Sender', 'msgsender', false, time(), null, null, null);
         $recipient = new Recipient(ChatType::Dialog, 102, null);
         $message = new Message(time(), $recipient, $messageBody, $sender, null, null, null);
         $update = new MessageCreatedUpdate(time(), $message, 'en-US');

@@ -15,6 +15,7 @@ use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\AbstractInlin
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\CallbackButton;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\ChatButton;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\LinkButton;
+use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\MessageButton;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\OpenAppButton;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\RequestContactButton;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Buttons\Inline\RequestGeoLocationButton;
@@ -311,6 +312,7 @@ readonly class ModelFactory
             InlineButtonType::RequestGeoLocation => RequestGeoLocationButton::fromArray($data),
             InlineButtonType::Chat => ChatButton::fromArray($data),
             InlineButtonType::OpenApp => OpenAppButton::fromArray($data),
+            InlineButtonType::Message => MessageButton::fromArray($data),
             default => throw new LogicException(
                 'Unknown or unsupported inline button type: ' . ($data['type'] ?? 'none')
             ),

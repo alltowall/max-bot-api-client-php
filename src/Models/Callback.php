@@ -13,13 +13,13 @@ final readonly class Callback extends AbstractModel
      * @param int $timestamp Unix-time when user pressed the button.
      * @param string $callbackId Identifier of the callback, unique for the message.
      * @param string $payload Payload from the pressed button.
-     * @param User $user User who pressed the button.
+     * @param UserWithPhoto $user User who pressed the button.
      */
     public function __construct(
         public int $timestamp,
         public string $callbackId,
         public string $payload,
-        public User $user,
+        public UserWithPhoto $user,
     ) {
     }
 }

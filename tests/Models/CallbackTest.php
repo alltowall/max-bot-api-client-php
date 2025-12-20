@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace BushlanovDev\MaxMessengerBot\Tests\Models;
 
 use BushlanovDev\MaxMessengerBot\Models\Callback;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Callback::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class CallbackTest extends TestCase
 {
     #[Test]
@@ -29,6 +29,9 @@ final class CallbackTest extends TestCase
                 'last_activity_time' => 1678886000,
                 'last_name' => null,
                 'username' => null,
+                'description' => null,
+                'avatar_url' => null,
+                'full_avatar_url' => null,
             ],
         ];
 
@@ -38,7 +41,7 @@ final class CallbackTest extends TestCase
         $this->assertSame(1678886400, $callback->timestamp);
         $this->assertSame('cb.12345.abc', $callback->callbackId);
         $this->assertSame('button_1_pressed', $callback->payload);
-        $this->assertInstanceOf(User::class, $callback->user);
+        $this->assertInstanceOf(UserWithPhoto::class, $callback->user);
         $this->assertSame(101, $callback->user->userId);
         $this->assertEquals($data, $callback->toArray());
     }

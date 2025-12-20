@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BushlanovDev\MaxMessengerBot\Models;
 
-final readonly class UserWithPhoto extends AbstractModel
+final readonly class UserWithPhoto extends AbstractUser
 {
     /**
      * @param int $userId Users identifier.
@@ -18,15 +18,16 @@ final readonly class UserWithPhoto extends AbstractModel
      * @param string|null $fullAvatarUrl URL of avatar of a bigger size.
      */
     public function __construct(
-        public int $userId,
-        public string $firstName,
-        public ?string $lastName,
-        public ?string $username,
-        public bool $isBot,
-        public int $lastActivityTime,
+        int $userId,
+        string $firstName,
+        ?string $lastName,
+        ?string $username,
+        bool $isBot,
+        int $lastActivityTime,
         public ?string $description,
         public ?string $avatarUrl,
         public ?string $fullAvatarUrl,
     ) {
+        parent::__construct($userId, $firstName, $lastName, $username, $isBot, $lastActivityTime);
     }
 }

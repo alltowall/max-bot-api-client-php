@@ -6,14 +6,14 @@ namespace BushlanovDev\MaxMessengerBot\Tests\Models\Updates;
 
 use BushlanovDev\MaxMessengerBot\Enums\UpdateType;
 use BushlanovDev\MaxMessengerBot\Models\Updates\BotRemovedFromChatUpdate;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(BotRemovedFromChatUpdate::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class BotRemovedFromChatUpdateTest extends TestCase
 {
     #[Test]
@@ -30,6 +30,9 @@ final class BotRemovedFromChatUpdateTest extends TestCase
                 'is_bot' => false,
                 'last_activity_time' => 1679000000,
                 'last_name' => null,
+                'description' => null,
+                'avatar_url' => null,
+                'full_avatar_url' => null,
             ],
             'is_channel' => false,
         ];
@@ -41,7 +44,7 @@ final class BotRemovedFromChatUpdateTest extends TestCase
         $this->assertSame(1679100000, $update->timestamp);
         $this->assertSame(123456, $update->chatId);
         $this->assertFalse($update->isChannel);
-        $this->assertInstanceOf(User::class, $update->user);
+        $this->assertInstanceOf(UserWithPhoto::class, $update->user);
         $this->assertSame(555, $update->user->userId);
         $this->assertEquals($data, $update->toArray());
     }

@@ -11,7 +11,7 @@ use BushlanovDev\MaxMessengerBot\LongPollingHandler;
 use BushlanovDev\MaxMessengerBot\Models\UpdateList;
 use BushlanovDev\MaxMessengerBot\Models\Updates\AbstractUpdate;
 use BushlanovDev\MaxMessengerBot\Models\Updates\BotStartedUpdate;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use BushlanovDev\MaxMessengerBot\UpdateDispatcher;
 use Error;
 use Exception;
@@ -30,7 +30,7 @@ use Psr\Log\LoggerInterface;
 #[UsesClass(UpdateList::class)]
 #[UsesClass(AbstractUpdate::class)]
 #[UsesClass(BotStartedUpdate::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class LongPollingHandlerTest extends TestCase
 {
     use PHPMock;
@@ -77,7 +77,7 @@ final class LongPollingHandlerTest extends TestCase
 
     public static function processUpdatesProvider(): array
     {
-        $user = new User(1, 'Test', null, null, false, time());
+        $user = new UserWithPhoto(1, 'Test', null, null, false, time(), null, null, null);
         $update1 = new BotStartedUpdate(time(), 1, $user, null, null);
         $update2 = new BotStartedUpdate(time(), 2, $user, null, null);
 
@@ -167,7 +167,7 @@ final class LongPollingHandlerTest extends TestCase
 
         $dispatcher = new UpdateDispatcher($apiMock, $loggerMock);
 
-        $user = new User(1, 'Test', null, null, false, time());
+        $user = new UserWithPhoto(1, 'Test', null, null, false, time(), null, null, null);
         $updateToFail = new BotStartedUpdate(time(), 1, $user, null, null);
         $updateToSucceed = new BotStartedUpdate(time(), 2, $user, null, null);
 

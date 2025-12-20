@@ -24,6 +24,7 @@ final class ChatAdminTest extends TestCase
         $expected = [
             'user_id' => 123,
             'permissions' => ['write', 'pin_message'],
+            'alias' => null,
         ];
 
         $this->assertEquals($expected, $admin->toArray());

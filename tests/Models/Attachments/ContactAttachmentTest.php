@@ -6,7 +6,7 @@ namespace BushlanovDev\MaxMessengerBot\Tests\Models\Attachments;
 
 use BushlanovDev\MaxMessengerBot\Models\Attachments\ContactAttachment;
 use BushlanovDev\MaxMessengerBot\Models\Attachments\Payloads\ContactAttachmentPayload;
-use BushlanovDev\MaxMessengerBot\Models\User;
+use BushlanovDev\MaxMessengerBot\Models\UserWithPhoto;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ContactAttachment::class)]
 #[UsesClass(ContactAttachmentPayload::class)]
-#[UsesClass(User::class)]
+#[UsesClass(UserWithPhoto::class)]
 final class ContactAttachmentTest extends TestCase
 {
     #[Test]
